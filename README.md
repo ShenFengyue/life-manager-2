@@ -11,6 +11,20 @@
 
 不是待办清单，不是网页应用，不是多人协作工具。
 
+## 界面一览
+
+下面的截图来自 `tools/seed_demo.py` 生成的演示数据（一年的使用痕迹），不是真实个人记录。
+
+| 总览：总热力图 + 当前重点 + 快速记录 | 热力图：领域 / 进程 / 线程分层 |
+|---|---|
+| ![总览](docs/screenshots/overview.png) | ![热力图](docs/screenshots/heatmaps.png) |
+
+| 思维导图：点卡片即记录 | 活动记录：按天分隔，可改可删 |
+|---|---|
+| ![思维导图](docs/screenshots/mindmap.png) | ![活动记录](docs/screenshots/activity.png) |
+
+![进程树](docs/screenshots/processes.png)
+
 ---
 
 ## 一、快速开始
