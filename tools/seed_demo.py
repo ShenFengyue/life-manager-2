@@ -308,7 +308,7 @@ NOTE_BANK: dict[str, tuple[str, ...]] = {
     "KV Cache 与显存": (
         "PagedAttention 的 block 回收改成 LIFO，碎片率降到 {pct}%",
         "定位一次显存泄漏：CUDA graph 没释放",
-        "prefix cache 命中率从 {pct}% 提到 {pct2}%",
+        "prefix cache 命中率从 {pct}% 提到 {pctbig}%",
         "算了 {n} 组参数下 KV cache 的理论上限",
         "和硬件团队对了一遍 HBM 带宽的数字",
         "写了个小工具 dump 每个 block 的引用计数",
@@ -618,6 +618,8 @@ class Ctx(dict):
             return str(rng.choice([8, 11, 12, 15, 18, 22, 27, 31, 35, 42]))
         if key == "pct2":
             return str(rng.randint(1, 4))
+        if key == "pctbig":
+            return str(rng.randint(42, 88))
         if key == "ms":
             return str(rng.choice([180, 210, 240, 265, 290, 320, 350, 380, 410, 460]))
         if key == "ms2":

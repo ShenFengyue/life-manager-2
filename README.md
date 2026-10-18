@@ -1,10 +1,9 @@
-# Life Manager v1.34.0
+# Life Manager 2
 
-> 版本与变更记录见 [CHANGELOG.md](CHANGELOG.md)。应用版本与数据结构版本是两件事：
-> 当前应用版本 **1.34.0**，数据结构版本 **v4**（旧库启动时自动升级，升级前自动备份）。
+简体中文 | [English](README.en.md)
 
-> 这个项目是怎么在一个晚上被"聊"出来的（含时间线、真实日志与成本账）：
-> [vibe coding全过程记录.md](vibe%20coding全过程记录.md)。
+> 版本与变更记录见 [CHANGELOG.md](CHANGELOG.md)。应用版本 **1.34.0**，
+> 数据结构 **v4**（旧库启动时自动升级，升级前自动备份）。
 
 一个供单人本地使用的 Windows 桌面应用：把同时推进的人生事务**外置化、结构化、可视化**。
 树负责秩序，网负责联系，时间负责记录变化，热力图负责展示真实活动，重点置顶负责决定当下行动。
@@ -13,17 +12,37 @@
 
 ## 界面一览
 
-下面的截图来自 `tools/seed_demo.py` 生成的演示数据（一年的使用痕迹），不是真实个人记录。
+下面的截图全部来自本程序的实际运行，数据由 `tools/seed_demo.py` 生成（一年多、1500 多条记录的使用痕迹），不是真实个人记录。
 
-| 总览：总热力图 + 当前重点 + 快速记录 | 热力图：领域 / 进程 / 线程分层 |
+**总览**：最大的那张是总热力图（全部领域与进程汇总），下面是当前重点、快速记录、各领域热力图与最近活动。
+
+![总览](docs/screenshots/overview.png)
+
+| 热力图：领域 / 进程 / 线程逐层展开 | 思维导图：单击卡片即可记录 |
 |---|---|
-| ![总览](docs/screenshots/overview.png) | ![热力图](docs/screenshots/heatmaps.png) |
+| ![热力图](docs/screenshots/heatmaps.png) | ![思维导图](docs/screenshots/mindmap.png) |
 
-| 思维导图：点卡片即记录 | 活动记录：按天分隔，可改可删 |
+| 活动记录：按天分开，可改可删 | 进程树：三层结构 + 变化历史 |
 |---|---|
-| ![思维导图](docs/screenshots/mindmap.png) | ![活动记录](docs/screenshots/activity.png) |
+| ![活动记录](docs/screenshots/activity.png) | ![进程树](docs/screenshots/processes.png) |
 
-![进程树](docs/screenshots/processes.png)
+| 日记：每天一篇，写进本地 Markdown | 数据：备份 / 恢复 / JSON / CSV 导出 |
+|---|---|
+| ![日记](docs/screenshots/diary.png) | ![数据](docs/screenshots/data.png) |
+
+**点开任意一张热力图**，在大图里点某一天的格子，那天的记录会直接列在下方（可修改、可彻底删除）：
+
+![大热力图](docs/screenshots/heatmap-detail.png)
+
+**深色模式**（左栏底部切换，配色对齐 GitHub Dark）：
+
+| 总览 | 热力图 |
+|---|---|
+| ![深色总览](docs/screenshots/dark-overview.png) | ![深色热力图](docs/screenshots/dark-heatmaps.png) |
+
+**`Ctrl+N` 快速记录**：先模糊匹配节点，回车选中，再写备注，再回车保存——只有一个输入框。
+
+![快速记录](docs/screenshots/quick-capture.png)
 
 ---
 
