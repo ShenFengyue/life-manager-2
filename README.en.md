@@ -147,6 +147,15 @@ It builds about 8 areas, 19 processes, 40 threads and ~1,500 activities spread o
 15 months, plus a journal. **It wipes and rebuilds the current database**, so never run it on data
 you care about.
 
+### Or restore the bundled demo snapshot
+
+The repository ships [`demo/`](demo/) — a **fictional** database snapshot (15 months, 1,500+ records,
+8 areas, 170 journal days) plus the matching `diary.md`. It is a separate folder: `data/` is never
+committed, `demo/` is just an optional sample.
+
+See [demo/README.md](demo/README.md): copy the file into `data/backups/` and restore it from the Data page,
+or replace the database directly.
+
 ---
 
 ## 6. Where the data lives
@@ -249,6 +258,7 @@ Life-Manager-2/
 │   ├── theme.py             light/dark palettes and stylesheet
 │   ├── pages/               six pages
 │   └── widgets/             shared widgets (heatmap calendar, tables, dialogs)
+├── demo/                    fictional demo snapshot (optional, separate from data/)
 ├── tests/                   218 tests
 ├── tools/                   preview renderer, icon builder, demo data seeder
 ├── docs/screenshots/        the images above

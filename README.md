@@ -187,40 +187,47 @@ py -3.13 -m venv .venv
 > 原版会在空库时写入一套占位模板；这份副本在 `app/main.py` 里显式关掉了初始化数据
 > （`db.initialize(seed=False)`），并把 `seeded` 标记写进数据库，所以以后也不会突然冒出模板。
 
+### 想要一份现成的演示数据？
+
+仓库里带了 [`demo/`](demo/)：一份**虚构的**数据库快照（15 个月、1500+ 条记录、8 个领域、170 天日记）。
+它和 `data/` 是分开的——`data/` 永远不进 Git，`demo/` 只是可选的样例。
+
+用法见 [demo/README.md](demo/README.md)：复制到 `data/backups/` 后在「数据」页恢复，或直接替换数据库。
+想按当天重新生成也可以：`.venv\Scripts\python.exe tools\seed_demo.py --force`。
+
 ---
 
 ## 六、目录结构
 
 ```
-Life-Manager/
+Life-Manager-2/
 ├── 启动.pyw                  ← 日常双击入口（环境检测 + 无控制台启动）
 ├── requirements.txt
-├── README.md
+├── README.md / README.en.md  ← 中英文说明
+├── CHANGELOG.md
 ├── assets/
 │   ├── logo.png              ← 应用图标源图
-│   └── logo.ico              ← 多尺寸图标（任务栏/标题栏用，由 tools/make_icon.py 生成）
+│   └── logo.ico              ← 多尺寸图标（任务栏 / 标题栏用，由 tools/make_icon.py 生成）
 ├── app/
-│   ├── main.py               ← 应用入口（日志 / 数据库 / 主窗口）
+│   ├── main.py               ← 应用入口（日志 / 数据库 / 主窗口 / 主题重建）
 │   ├── main_window.py        ← 主窗口与可收起的左侧导航
 │   ├── paths.py              ← 项目内路径解析（全部相对项目根目录动态计算）
 │   ├── models.py             ← 数据模型与枚举
-│   ├── storage.py            ← SQLite 表结构、迁移、初始数据、事务、完整性检查
+│   ├── storage.py            ← SQLite 表结构、迁移、事务、完整性检查
 │   ├── services.py           ← 业务逻辑（节点 / 关联 / 活动 / 历史事件 / 备份 / 导入导出）
 │   ├── heatmap.py            ← 热力图统计与日历网格计算（纯 Python，可无头测试）
-│   ├── theme.py              ← 配色与样式（固定浅色调色板）
+│   ├── diary.py              ← 日记 Markdown 的解析与渲染
+│   ├── clock.py              ← 唯一的北京时间来源
+│   ├── theme.py              ← 浅色 / 深色配色与样式
 │   ├── appconfig.py          ← data/config.json 读写
 │   ├── logging_setup.py      ← 日志配置
-│   ├── pages/                ← 总览 / 进程树 / 热力图 / 活动记录 / 数据
-│   └── widgets/              ← 通用组件、侧边栏、GitHub 风格热力图控件
-├── data/                     ← 全部应用数据（首次运行自动创建）
-│   ├── process_manager.sqlite3   ← 唯一正式数据源
-│   ├── diary.md                  ← 全部日记（Markdown，一个文件装下所有天）
-│   ├── backups/                  ← 备份（含恢复/导入前的自动备份）
-│   ├── exports/                  ← JSON 导出
-│   ├── logs/                     ← 运行日志
-│   └── config.json               ← 窗口大小、侧边栏状态等界面设置
-├── tests/                    ← 自动化测试（39 项）
-└── tools/                    ← 开发辅助（界面预览渲染、窗口抓图）
+│   ├── pages/                ← 总览 / 热力图 / 思维导图 / 进程树 / 活动记录 / 日记 / 数据
+│   └── widgets/              ← 通用组件、侧边栏、GitHub 风格热力图控件、快速记录
+├── demo/                     ← 虚构的演示数据快照（可选，和 data/ 完全分开）
+├── data/                     ← 全部应用数据（首次运行自动创建，永不进 Git）
+├── docs/screenshots/         ← README 用的界面截图
+├── tests/                    ← 自动化测试（218 项）
+└── tools/                    ← 界面预览渲染、图标生成、演示数据生成
 ```
 
 ---
